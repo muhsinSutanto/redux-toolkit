@@ -1,28 +1,16 @@
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { increment, decrement } from "./redux/features/counter/counterAction";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Menu from "./pages/Menu";
 
-function App() {
-  const dispatch = useDispatch();
-  const count = useSelector((state) => state.counterReducer);
-  const test = useSelector((state) => state.counter);
-
-  const handleAdd = () => {
-    dispatch(increment());
-  };
-  const handleMinus = () => {
-    dispatch(decrement());
-  };
-
-  console.log("test", test);
+const App = () => {
   return (
-    <>
-      <h1> homepage</h1>
-      <p>{count?.value}</p>
-      <button onClick={handleAdd}>tambah</button>
-      <button onClick={handleMinus}>kurang</button>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/menu" element={<Menu />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
